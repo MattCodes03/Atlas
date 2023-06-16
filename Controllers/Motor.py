@@ -2,14 +2,11 @@ from machine import Pin, PWM
 
 
 class Motor:
-    __pwm_frequency = 50
     __min_u16_duty = 750
     __max_u16_duty = 1023
 
     def __init__(self, in1, in2, en):
         self.__setup(in1, in2, en)
-
-        self.speed = PWM(Pin(self.en, Pin.OUT), frequency=1000, duty_u16=8129)
 
     def move_forward(self, speed):
         self.enable_pin.duty_u16(self.__calculate_u16_duty(speed))
