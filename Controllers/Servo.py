@@ -3,8 +3,8 @@ from machine import Pin, PWM
 
 class Servo:
     __servo_pwm_frequency = 50
-    __min_u16_duty = 26 - 0
-    __max_u16_duty = 123 - 0
+    __min_u16_duty = 750
+    __max_u16_duty = 1023
     min_angle = 0
     max_angle = 180
     current_angle = 0.001
