@@ -2,7 +2,7 @@ from machine import Pin, PWM
 
 
 class Servo:
-    __servo_pwm_frequency = 50
+    __servo_pwm_frequency = 750
     __min_u16_duty = 750
     __max_u16_duty = 1023
     min_angle = 0
@@ -24,6 +24,9 @@ class Servo:
         # Calculate new duty cycle and move the servo
         duty_u16 = self.__angle_to_u16_duty(angle)
         self.__motor.duty_u16(duty_u16)
+
+    def stop(self):
+        self.__motor.duty_u16(0)
 
     # Will Calculate a duty cycle value based on an angle
     def __angle_to_u16_duty(self, angle):
