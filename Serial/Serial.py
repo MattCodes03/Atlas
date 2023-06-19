@@ -2,15 +2,16 @@ import serial
 
 
 class Serial:
-    __terminator = '/r'.encode('utf-8')
+    __terminator = '\n'.encode('utf-8')
 
-    def __init__(self, serial_line, baudrate=115200, timeout=100):
+    def __init__(self, serial_line, baudrate=19600, timeout=5):
         self.serial = serial.Serial(
-            serial_line, baudrate, serial.EIGHTBITS, timeout=timeout)
+            serial_line, baudrate, timeout=timeout)
 
     def send(self, signal):
-        line = '%s\r\f' % signal
-        self.serial.write(line.encode('utf-8'))
+        print(f'Sending Signal: {signal}')
+        signal = signal + '\n'
+        self.serial.write(bytes(signal, 'utf-8'))
 
     def receive(self):
         line = self.serial.read_until(self.__terminator)
