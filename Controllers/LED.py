@@ -19,3 +19,4 @@ class LED:
 
     def __setup(self, pin):
         self.led = Pin(pin, Pin.OUT)
+        self.off()
