@@ -2,11 +2,11 @@ from machine import Pin, PWM
 
 
 class DCMotor:
-    __pwm_frequency = 2000
-    __min_u16_duty = 750
-    __max_u16_duty = 1023
+    __pwm_frequency: int = 2000
+    __min_u16_duty: int = 750
+    __max_u16_duty: int = 1023
 
-    def __init__(self, in1, in2, en):
+    def __init__(self, in1: int, in2: int, en: int):
         self.__setup(in1, in2, en)
 
     def move_forward(self, speed):
@@ -30,7 +30,7 @@ class DCMotor:
         self.input2.low()
         self.enable_pin.duty_u16(0)
 
-    def __calculate_u16_duty(self, speed):
+    def __calculate_u16_duty(self, speed) -> int:
         if (speed <= 0 or speed > 100):
             return 0
 
