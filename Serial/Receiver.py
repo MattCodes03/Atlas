@@ -6,7 +6,7 @@ from machine import UART
 
 
 class Receiver:
-    def __init__(self, id: int, baudrate: int, encoding: str):
+    def __init__(self, id: int, baudrate: int, encoding='utf-8'):
         self.__setup(id, baudrate)
         self.encoding = encoding
 

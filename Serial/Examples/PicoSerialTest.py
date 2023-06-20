@@ -3,6 +3,7 @@
 
 from machine import Pin, UART
 from time import sleep
+from Receiver import Receiver
 
 led = Pin("LED", Pin.OUT)
 
@@ -19,14 +20,11 @@ def off():
     led.value(0)
 
 
-uart = UART(1, 9600)
-
+rec = Receiver(1, 9600)
 
 while True:
-    val = uart.read()
-    if val:
-        val = val.decode('utf-8').strip()
-        print(val)
+    val = str(rec)
+    print(val)
 
     if (val == 'on'):
         on()
