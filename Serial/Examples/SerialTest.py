@@ -10,4 +10,4 @@ while True:
 
     command = Command('MOTOR', f'{speed},{direction}')
 
-    serial.send(str(json.dumps(command.command)))
+    serial.send(json.dumps(command()))
