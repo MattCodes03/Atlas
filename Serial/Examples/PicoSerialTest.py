@@ -3,32 +3,23 @@
 
 from machine import Pin, UART
 from time import sleep
+import json
 from Receiver import Receiver
+from Controllers.DCMotor import DCMotor
 
-led = Pin("LED", Pin.OUT)
-
-# Turn the LED on
-
-
-def on():
-    led.value(1)
-
-# Turn the LED off
-
-
-def off():
-    led.value(0)
-
-
-rec = Receiver(1, 9600)
+rec = Receiver(1, 9600, 'utf-8')
+motor = DCMotor(0, 1, 7)
 
 while True:
-    val = str(rec)
-    print(val)
+    command = str(rec)
+    if command:
+        command = json.loads(command)
+        speed, direction = command['args'].split(',')
 
-    if (val == 'on'):
-        on()
-    elif (val == 'off'):
-        off()
-
-    sleep(1)
+        if command['command'] == 'MOTOR':
+            if direction == 'b':
+                motor.move_backward(int(speed))
+            elif direction == 'f':
+                motor.move_forward(int(speed))
+            elif direction == 's':
+                motor.stop()

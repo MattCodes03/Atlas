@@ -1,7 +1,13 @@
 from Serial import Serial
+from Command import Command
+import json
 
-serial = Serial('/dev/serial0', 9600)
+serial = Serial('/dev/serial0')
 
 while True:
-    sig = input("Signal: ")
-    serial.send(sig)
+    speed = input("What Speed: ")
+    direction = input("What Direction: ")
+
+    command = Command('MOTOR', f'{speed},{direction}')
+
+    serial.send(str(json.dumps(command.command)))
