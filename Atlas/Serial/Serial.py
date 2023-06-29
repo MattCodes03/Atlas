@@ -1,7 +1,7 @@
 import serial
 
 
-class UART:
+class Serial:
     __terminator = '\n'.encode('utf-8')
 
     def __init__(self, serial_line: str, baudrate=9600, timeout=5, encoding='utf-8'):

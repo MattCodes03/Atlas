@@ -1,19 +1,17 @@
 import json
-import Atlas.Controllers.DCMotor as dcm
-from Atlas.Serial.Command import Command
-from Atlas.Serial.UART import UART
+from Atlas import Serial, Command, FORWARD, BACKWARD
 
 
-serial = UART('/dev/serial0')
+serial = Serial('/dev/serial0')
 
 while True:
     speed = input("What Speed: ")
     direction = input("What Direction: ")
 
     if direction == 'f':
-        direction = dcm.FORWARD
+        direction = FORWARD
     else:
-        direction = dcm.BACKWARD
+        direction = BACKWARD
 
     command = Command('MOTOR', f'{speed},{direction}')
 

@@ -1,11 +1,10 @@
 # This is MicroPython Code designed to run on the Raspberry PI Pico
 # It was used to test the serial connection between the Pico Microcontroller and a Raspberry Pi 3
 
-from machine import Pin, UART
+from machine import Pin
 from time import sleep
 import json
-from Receiver import Receiver
-from Controllers.DCMotor import DCMotor
+from Atlas import *
 
 rec = Receiver(1, 9600, 'utf-8')
 motor = DCMotor(0, 1, 7)
@@ -18,8 +17,8 @@ while True:
 
         if command['command'] == 'MOTOR':
             if direction == 'b':
-                motor.move_backward(int(speed))
+                motor.move(int(speed), direction)
             elif direction == 'f':
-                motor.move_forward(int(speed))
+                motor.move(int(speed), direction)
             elif direction == 's':
                 motor.stop()
