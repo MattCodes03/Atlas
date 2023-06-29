@@ -1,6 +1,5 @@
 import json
-from Atlas import Serial, Command, FORWARD, BACKWARD
-
+from Atlas import *
 
 serial = Serial('/dev/serial0')
 
