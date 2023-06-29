@@ -1,3 +1,5 @@
+# NOTE: When running locally use pip install -e .
+
 from Atlas.Controllers.Servo import Servo
 from Atlas.Controllers.LED import LED
 from Atlas.Controllers.DCMotor import DCMotor, FORWARD, BACKWARD
