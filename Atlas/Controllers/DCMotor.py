@@ -14,13 +14,13 @@ class DCMotor:
         self.__setup(in1, in2, en)
 
     def move(self, speed, direction):
-        if direction == FORWARD:
+        if direction == 'f':
             print("Forward...")
             self.input1.high()
             self.input2.low()
             self.enable_pin.duty_u16(self.__calculate_u16_duty(speed))
 
-        elif direction == BACKWARD:
+        elif direction == 'b':
             print("Backward...")
             self.input1.low()
             self.input2.high()
