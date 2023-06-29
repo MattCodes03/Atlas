@@ -1,7 +1,8 @@
-from Serial.UART import UART
-from Serial.Command import Command
-import Controllers.DCMotor as dcm
 import json
+import Controllers.DCMotor as dcm
+from Serial.Command import Command
+from Serial.UART import UART
+
 
 serial = UART('/dev/serial0')
 
