@@ -6,20 +6,25 @@ class DCMotor:
     __min_u16_duty: int = 750
     __max_u16_duty: int = 1023
 
+    # Directions
+    FORWARD = 0
+    BACKWARD = 1
+
     def __init__(self, in1: int, in2: int, en: int):
         self.__setup(in1, in2, en)
 
-    def move_forward(self, speed):
-        print("Forward...")
-        self.input1.high()
-        self.input2.low()
-        self.enable_pin.duty_u16(self.__calculate_u16_duty(speed))
+    def move(self, speed, direction):
+        if direction == self.FORWARD:
+            print("Forward...")
+            self.input1.high()
+            self.input2.low()
+            self.enable_pin.duty_u16(self.__calculate_u16_duty(speed))
 
-    def move_backward(self, speed):
-        print("Backward...")
-        self.input1.low()
-        self.input2.high()
-        self.enable_pin.duty_u16(self.__calculate_u16_duty(speed))
+        elif direction == self.BACKWARD:
+            print("Backward...")
+            self.input1.low()
+            self.input2.high()
+            self.enable_pin.duty_u16(self.__calculate_u16_duty(speed))
 
     def stop(self):
         print("Stopped...")
