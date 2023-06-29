@@ -1,7 +1,7 @@
 import json
-import Controllers.DCMotor as dcm
-from Serial.Command import Command
-from Serial.UART import UART
+import Atlas.Controllers.DCMotor as dcm
+from Atlas.Serial.Command import Command
+from Atlas.Serial.UART import UART
 
 
 serial = UART('/dev/serial0')
