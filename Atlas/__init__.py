@@ -1,4 +1,4 @@
-from Atlas.Serial.Serial import Serial
+from Atlas.Serial.SerialConnection import Serial
 from Atlas.Serial.Command import Command
 from Atlas.Serial.Receiver import Receiver
 
